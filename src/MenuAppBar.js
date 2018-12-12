@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -12,8 +12,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import Subscribe from './Subscribe';
 
 const styles = {
+    AppBar: {
+    },
     root: {
         flexGrow: 1,
     },
@@ -28,25 +31,25 @@ const styles = {
 
 class MenuAppBarComponent extends React.Component {
     state = {
-        auth: true,
+        auth: false,
         anchorEl: null,
     };
 
     handleChange = event => {
-        this.setState({ auth: event.target.checked });
+        this.setState({auth: event.target.checked});
     };
 
     handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
+        this.setState({anchorEl: event.currentTarget});
     };
 
     handleClose = () => {
-        this.setState({ anchorEl: null });
+        this.setState({anchorEl: null});
     };
 
     render() {
-        const { classes } = this.props;
-        const { auth, anchorEl } = this.state;
+        const {classes} = this.props;
+        const {auth, anchorEl} = this.state;
         const open = Boolean(anchorEl);
 
         return (
@@ -54,15 +57,15 @@ class MenuAppBarComponent extends React.Component {
                 <FormGroup>
                     <FormControlLabel
                         control={
-                            <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch" />
+                            <Switch checked={auth} onChange={this.handleChange} aria-label="LoginSwitch"/>
                         }
-                        label={auth ? 'Logout' : 'Login'}
+                        label={auth ? 'Logout' : <Subscribe/>}
                     />
                 </FormGroup>
-                <AppBar position="static">
+                <AppBar className={classes.AppBar} position="static" >
                     <Toolbar>
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                            <MenuIcon />
+                            <MenuIcon/>
                         </IconButton>
                         <Typography variant="h6" color="inherit" className={classes.grow}>
                             Photos
@@ -75,7 +78,7 @@ class MenuAppBarComponent extends React.Component {
                                     onClick={this.handleMenu}
                                     color="inherit"
                                 >
-                                    <AccountCircle />
+                                    <AccountCircle/>
                                 </IconButton>
                                 <Menu
                                     id="menu-appbar"

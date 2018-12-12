@@ -1,9 +1,10 @@
 import React from 'react';
 import {MenuAppBar} from "./MenuAppBar";
-import ImgMediaCard from './CardsList';
+import NestedGrid from './CardsList';
 import NavTabs from './NavTabs';
 import SwipeableTextMobileStepper from './Carousel';
 import './App.css';
+
 
 
 const App = () => {
@@ -12,9 +13,10 @@ const App = () => {
             <MenuAppBar/>
             <NavTabs/>
             <SwipeableTextMobileStepper/>
-            <ImgMediaCard/>
+            <NestedGrid/>
         </div>
     )
 };
+
 
 export default App;

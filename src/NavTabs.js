@@ -54,10 +54,6 @@ class NavTabs extends React.Component {
                             <LinkTab label="Items" href="Items" />
                         </Tabs>
                     </AppBar>
-                    {value === 0 && <TabContainer></TabContainer>}
-                    {value === 1 && <TabContainer></TabContainer>}
-                    {value === 2 && <TabContainer></TabContainer>}
-                    {value === 3 && <TabContainer></TabContainer>}
                 </div>
             </NoSsr>
         );

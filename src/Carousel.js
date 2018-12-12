@@ -13,8 +13,6 @@ const tutorialSteps = [
     {
         imgPath:
             'https://cdn.vox-cdn.com/thumbor/lxBRanHF4U9vLZlDUDbKA-AfPR8=/407x0:2560x1600/1200x800/filters:focal(1347x390:1755x798)/cdn.vox-cdn.com/uploads/chorus_image/image/55811939/wallpaper_2560x1600.0.jpg',
-        BannerTextPath:
-    'ME',
     },
     {
         imgPath:
@@ -30,18 +28,10 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
     },
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: theme.spacing.unit * 4,
-        backgroundColor: theme.palette.background.default,
-    },
     img: {
-        display: 'block',
-        overflow: 'hidden',
         width: '100%',
-    },
-
+        position: 'relative',
+},
 });
 
 class SwipeableTextMobileStepper extends React.Component {
