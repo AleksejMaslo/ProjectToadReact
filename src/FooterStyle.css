@@ -1,0 +1,128 @@
+
+.region-footer {
+    background-color: #333333;
+}
+
+footer {
+    clear: both;
+    font-size: 1.2rem /* 12px/14px */;
+    padding: 0 0 25px;
+    position: relative;
+}
+
+/*footer #back-to-top {
+    display: none;
+    margin-left: -80px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+}
+
+footer #back-to-top a {
+    color: #000000;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 700;
+    display: block;
+    width: 160px;
+    height: 40px;
+    padding-top: 20px;
+    cursor: pointer;
+}*/
+
+footer .main-footer {
+    font-weight: 600;
+    text-align: left;
+    padding-top: 10px;
+    position: relative;
+}
+
+footer .main-footer:before {
+    content: "";
+    height: 8px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+footer .main-footer .footer-text {
+    margin: 0 230px 0 280px;
+    color: #000000;
+}
+
+footer .main-footer .footer-text p.brand-family-title {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin: 25px 0 10px 0;
+    padding-top: 25px;
+}
+
+* > footer .main-footer .footer-text p {
+    display: block;
+    font-size: 1.6rem;
+    margin: 0 0 1.6rem;
+    padding: 0;
+}
+
+footer .main-footer .footer-text p.brand-family-menu {
+    text-transform: uppercase;
+    font-size: 1.85rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+}
+
+* > footer .main-footer .footer-text p {
+    display: block;
+}
+
+footer .main-footer .footer-text a {
+    color: #000000;
+    text-decoration: none;
+}
+
+footer .main-footer .footer-text p.brand-family-menu span.separator {
+    margin: 0 4px;
+}
+
+footer .main-footer .footer-text p.terms {
+    font-weight: 400;
+}
+
+footer .main-footer .wizard {
+    position: absolute;
+    bottom: 1rem;
+    left: 10rem;
+}
+
+footer .main-footer .wizard a {
+    width: 131px;
+    height: 84px;
+}
+
+footer .main-footer .logo a {
+    text-indent: -999px;
+    outline: 0;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+}
+
+footer .main-footer .privacy {
+    position: absolute;
+    right: 125px;
+    bottom: 0;
+}
+
+footer .main-footer .logo {
+    margin: 0;
+}
+
+footer .main-footer p {
+    font-size: 1.2rem;
+}

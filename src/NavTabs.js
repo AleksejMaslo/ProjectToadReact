@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import NoSsr from '@material-ui/core/NoSsr';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 function TabContainer(props) {
     return (
@@ -20,7 +20,9 @@ TabContainer.propTypes = {
 };
 
 function LinkTab(props) {
-    return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
+    const renderLink = <Link to={props.to} {...props} >{props.label}</Link>;
+    return renderLink;
+    //return <Tab component={Link} onClick={event => event.preventDefault()} {...props} />;
 }
 
 const styles = theme => ({
@@ -48,10 +50,10 @@ class NavTabs extends React.Component {
                 <div className={classes.root}>
                     <AppBar position="static">
                         <Tabs fullWidth value={value} onChange={this.handleChange}>
-                            <LinkTab label="Home" href="Home" />
-                            <LinkTab label="Characters" href="Characters" />
-                            <LinkTab label="Spells" href="Spells" />
-                            <LinkTab label="Items" href="Items" />
+                            <LinkTab label="Home" href="Home" to = "/"/>
+                            <LinkTab label="Characters" href="Characters" to = "characters"/>
+                            <LinkTab label="Spells" href="Spells" to = "spells" />
+                            <LinkTab label="Items" href="Items" to="items"/>
                         </Tabs>
                     </AppBar>
                 </div>
