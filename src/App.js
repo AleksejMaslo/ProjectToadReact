@@ -3,7 +3,9 @@ import {MenuAppBar} from "./MenuAppBar";
 import NavTabs from './NavTabs';
 import Footer from './Footer';
 import {BrowserRouter, Route} from "react-router-dom";
-import {Characters} from "./Characters";
+import {Races} from "./Races";
+import {heroClasses} from "./Classes";
+import {Monsters} from "./Monsters";
 import {Home} from "./home/Home";
 import Spells from "./Spells";
 import Items from "./Items";
@@ -16,7 +18,9 @@ const App = () => {
                 <NavTabs/>
                 <div>
                     <Route exact path="/" component={Home}/>
-                    <Route path="/characters" component={Characters}/>
+                    <Route path="/races" component={Races}/>
+                    <Route path="/classes" component={heroClasses}/>
+                    <Route path="/monsters" component={Monsters}/>
                     <Route path="/spells" component={Spells}/>
                     <Route path="/items" component={Items}/>
                 </div>

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import TitlebarGridList from './CharactersIcons';
+
 const styles = theme => ({
     root: {
         width: '100%',
@@ -25,7 +26,7 @@ const cardContent = {
 
 const characterSheets = [cardContent];
 
-export const Characters = (props) => {
+export const heroClasses = (props) => {
     const {classes} = props;
 
     return (
@@ -41,8 +42,8 @@ export const Characters = (props) => {
     );
 };
 
-Characters.propTypes = {
+heroClasses.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Characters);
+export default withStyles(styles)(heroClasses);

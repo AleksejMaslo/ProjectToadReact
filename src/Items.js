@@ -7,6 +7,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
+import {getUrl} from './config/ServerConfiguration';
 
 const styles = theme => ({
     root: {
@@ -21,46 +22,54 @@ const styles = theme => ({
     },
 });
 
-const filling = {
-    name: "Backpack",
-    title: "Contemplative Reptile",
-    type: "Gear",
-    description: "A backpack is a leather pack carried on the back, typically with straps to secure it. A backpack can hold 1 cubic foot/ 30 pounds of gear.\n" +
-    "\n" + "You can also strap items, such as a bedroll or a coil of rope, to the outside of a backpack.",
-};
+class Items extends React.Component {
+    state = {
+        items: []
+    };
 
-const ItemList = [filling, filling, filling];
+    async componentDidMount()
+    {
+        this.doListSearch();
+    }
 
+    doListSearch = async () => {
+        const url = getUrl("api/items");
+        const response = await fetch(url);
+        const items = await response.json();
+        this.setState({items: items});
+    };
 
-const Items = (props) => {
-    const {classes} = props;
-    return (
-        <div>
-            <h1>Items</h1>
-            {ItemList.map(filling => {
-                return (
-                    <div>
-                        <div className={classes.root}>
-                            <ExpansionPanel>
-                                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
-                                    <Typography className={classes.heading}>{filling.name}</Typography>
-                                </ExpansionPanelSummary>
-                                <ExpansionPanelDetails>
-                                    <Typography>
-                                        {filling.description}
-                                    </Typography>
-                                    <Button variant="contained" color="primary" className={classes.button}>
-                                        View Details Page
-                                    </Button>
-                                </ExpansionPanelDetails>
-                            </ExpansionPanel>
+    render() {
+        let {classes} = this.props;
+        classes = classes ? classes : {root: '', table: ''};
+        return (
+            <div>
+                <h1>Items</h1>
+                {this.state.items.map(item => {
+                    return (
+                        <div>
+                            <div className={classes.root}>
+                                <ExpansionPanel>
+                                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                                        <Typography className={classes.heading}>{item.name}</Typography>
+                                    </ExpansionPanelSummary>
+                                    <ExpansionPanelDetails>
+                                        <Typography>
+                                            {item.description}
+                                        </Typography>
+                                        <Button variant="contained" color="primary" className={classes.button}>
+                                            View Details Page
+                                        </Button>
+                                    </ExpansionPanelDetails>
+                                </ExpansionPanel>
+                            </div>
                         </div>
-                    </div>
-                )
-            })}
-        </div>
-    );
-};
+                    );
+                })}
+            </div>
+        );
+    }
+}
 
 
 Items.propTypes = {
