@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const characters = require('./characters.controller');
+const races = require('./races.controller');
 const auth = require('../../auth/auth.service');
 
-router.get('/', auth.isAuthenticated(), characters.index);
+router.get('/', auth.isAuthenticated(), races.index);
 
 module.exports = router;

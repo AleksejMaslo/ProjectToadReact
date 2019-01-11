@@ -10,57 +10,39 @@ import InfoIcon from '@material-ui/icons/Info';
 const styles = theme => ({
     root: {
         display: 'flex',
-        flexWrap: 'wrap',
         justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
     },
     gridList: {
-        width: '50%',
+        width: '75%',
     },
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
     },
-
 });
 
 
-const tileData = [
-    {
-        img: 'http://connorscampaigns.wdfiles.com/local--files/d-d-races/dnd-races.jpg',
-        title: 'Races',
-        author: 'D&D',
-    },
-    {
-        img: 'https://media.comicbook.com/2018/03/dndraces-1088003-1280x0.jpeg',
-        title: 'Classes',
-        author: 'D&D',
-    },
-    {
-        img: 'https://i.pinimg.com/originals/75/f5/cd/75f5cd09c435147edaa152a766c71094.jpg',
-        title: 'Image',
-        author: 'author',
-    },
-    {
-        img: 'https://i.pinimg.com/originals/75/f5/cd/75f5cd09c435147edaa152a766c71094.jpg',
-        title: 'Image',
-        author: 'author',
-    },
-];
-
 function TitlebarGridList(props) {
     const {classes} = props;
+    const tileData = props.tileData ? props.tileData : [];
 
     return (
         <div className={classes.root}>
-            <GridList cellHeight={180} className={classes.gridList}>
+            <GridList cellHeight={450} className={classes.gridList}>
                 <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}/>
                 {tileData.map(tile => (
                     <GridListTile key={tile.img}>
                         <img src={tile.img} alt={tile.title}/>
                         <GridListTileBar
-                            title={tile.title}
-                            subtitle={<span>by: {tile.author}</span>}
+                            subtitle={<span style = {{fontFamily: 'Arial, Helvetica, sans-serif',
+                                fontSize: '26px',
+                                letterSpacing: '0px',
+                                wordSpacing: '2px',
+                                color: 'white',
+                                fontWeight: '700',
+                                textDecoration: 'none solid rgb(68, 68, 68)',
+                                fontStyle: 'normal',
+                                fontVariant: 'normal',
+                                textTransform: 'uppercase'}}>{tile.name}</span>}
                             actionIcon={
                                 <IconButton className={classes.icon}>
                                     <InfoIcon/>
@@ -76,6 +58,7 @@ function TitlebarGridList(props) {
 
 TitlebarGridList.propTypes = {
     classes: PropTypes.object.isRequired,
+    tileData: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default withStyles(styles)(TitlebarGridList);

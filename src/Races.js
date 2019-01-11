@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import TitlebarGridList from './CharactersIcons';
+import TiltlebarGridList from './TiltlebarGridList';
+import {getUrl} from './config/ServerConfiguration';
 
 const styles = theme => ({
     root: {
@@ -16,30 +17,31 @@ const styles = theme => ({
     },
 });
 
-const cardContent = {
-    image: "https://i.pinimg.com/originals/6d/4c/e6/6d4ce6955f599c6cb4eae7b673c5a856.jpg",
-    title: "Contemplative Reptile",
-    name: "Barbarian",
-    description: "Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.",
-    buttonText: "View Races",
-};
+class Races extends React.Component {
+    state = {
+        races: []
+    };
 
-const characterSheets = [cardContent];
+    async componentDidMount() {
+        this.doListSearch();
+    }
 
-export const Races = (props) => {
-    const {classes} = props;
+    doListSearch = async () => {
+        const url = getUrl("api/races");
+        const response = await fetch(url);
+        const races = await response.json();
+        this.setState({races: races});
+    };
 
-    return (
-        <div>
-            {characterSheets.map(filling => {
-                return (
-                    <div>
-                        <TitlebarGridList/>
-                    </div>
-                )
-            })}
-        </div>
-    );
+    render() {
+        const {classes} = this.props;
+        return (
+
+            <div>
+                <TiltlebarGridList tileData={this.state.races}/>
+            </div>
+        );
+    }
 };
 
 Races.propTypes = {
