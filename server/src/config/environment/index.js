@@ -10,6 +10,9 @@ const environment = {
             signed: true,
             maxAge: 10000000
         }
+    },
+    db: {
+        mongoUrl: "mongodb://localhost:27017/projecttoad"
     }
 };
 

@@ -10,6 +10,7 @@ const app = express();
 require('./server')(app);
 require('./express')(app);
 require('./router')(app);
+require('./database')(app);
 
 // Expose app
 module.exports = app;

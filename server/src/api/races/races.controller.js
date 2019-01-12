@@ -1,13 +1,4 @@
-let id = 0;
-
-function createData(name, description, image) {
-    id += 1;
-    return {name, description, image};
-}
-
-const races = [
-    createData('Dragonborn', 'Dragonborn look very much like dragons standing erect in humanoid form, though they lack wings or a tail.', 'dragonbornRace-art')
-];
+const Race = require('../../models/race.model');
 
 const tileData = [
     {
@@ -51,4 +42,22 @@ const tileData = [
 module.exports.index = function (req, res) {
     res.send(tileData);
     res.end();
+};
+module.exports.save = function (req, res) {
+    const race = new Race(
+        {
+            name: req.body.name,
+            size: req.body.size,
+            speedWalking: req.body.speedWalking,
+            speedBurrowing: req.body.speedBurrowing
+        }
+    );
+    race.save(function (err) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(201).end();
+            }
+        }
+    )
 };

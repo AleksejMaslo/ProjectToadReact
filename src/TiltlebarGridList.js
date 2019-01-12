@@ -15,6 +15,7 @@ const styles = theme => ({
     gridList: {
         width: '75%',
     },
+
     icon: {
         color: 'rgba(255, 255, 255, 0.54)',
     },
@@ -27,22 +28,29 @@ function TitlebarGridList(props) {
 
     return (
         <div className={classes.root}>
-            <GridList cellHeight={450} className={classes.gridList}>
+            <GridList cellHeight={480} className={classes.gridList}>
                 <GridListTile key="Subheader" cols={2} style={{height: 'auto'}}/>
                 {tileData.map(tile => (
-                    <GridListTile key={tile.img}>
+                    <GridListTile key={tile.img} style={{margin: '1% auto 10px',
+                        overflow: 'hidden',
+                        boxShadow: '5px 5px 15px #000000',
+                        top: '15%',
+                        left: '70px',
+                        right: '50%',
+                        cursor: 'default',}}>
                         <img src={tile.img} alt={tile.title}/>
                         <GridListTileBar
-                            subtitle={<span style = {{fontFamily: 'Arial, Helvetica, sans-serif',
+                            subtitle={<span style={{
+                                fontFamily: 'Arial, Helvetica, sans-serif',
                                 fontSize: '26px',
                                 letterSpacing: '0px',
                                 wordSpacing: '2px',
                                 color: 'white',
                                 fontWeight: '700',
-                                textDecoration: 'none solid rgb(68, 68, 68)',
                                 fontStyle: 'normal',
                                 fontVariant: 'normal',
-                                textTransform: 'uppercase'}}>{tile.name}</span>}
+                                textTransform: 'uppercase'
+                            }}>{tile.name}</span>}
                             actionIcon={
                                 <IconButton className={classes.icon}>
                                     <InfoIcon/>
