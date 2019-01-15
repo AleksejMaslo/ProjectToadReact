@@ -5,7 +5,8 @@ let RaceSchema = new Schema({
     name: {type: String, required: true, max: 100},
     size: {type: String, required: true},
     speedWalking:{type: Number, required: true},
-    speedBurrowing: {type: Number}
+    speedBurrowing: {type: Number},
+    img: {data: Buffer, type: String }
 });
 
 

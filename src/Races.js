@@ -51,9 +51,29 @@ class Races extends React.Component {
         const {classes} = this.props;
         return (
             <div>
-                <h1>Official Races</h1>
+                <h1 style={{fontFamily: 'Arial, Helvetica, sans-serif',
+                    fontSize: '30px',
+                    letterSpacing: '2px',
+                    wordSpacing: '2px',
+                    color: '#000000',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    fontStyle: 'normal',
+                    fontVariant: 'normal',
+                    textTransform: 'uppercase',
+                    textAlign: 'center',}}>Official Races:</h1>
                 <TiltlebarGridList tileData={this.state.races}/>
-                <h1>Create your own race</h1>
+                <h1 style={{fontFamily: 'Arial, Helvetica, sans-serif',
+                    fontSize: '30px',
+                    letterSpacing: '2px',
+                    wordSpacing: '2px',
+                    color: '#000000',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    fontStyle: 'normal',
+                    fontVariant: 'normal',
+                    textTransform: 'uppercase',
+                    textAlign: 'center',}}>Create your own race:</h1>
                 <NewAddField/>
             </div>
         );

@@ -1,3 +1,6 @@
+const fs = require('fs');
+const Character = require('../../models/character.model');
+
 const tileData = [
     {
         img: 'https://i.pinimg.com/originals/6d/4c/e6/6d4ce6955f599c6cb4eae7b673c5a856.jpg',
@@ -52,4 +55,25 @@ const tileData = [
 module.exports.index = function (req, res) {
     res.send(tileData);
     res.end();
+};
+module.exports.save = function (req, res) {
+    const character = new Character(
+        {
+            name: req.body.name,
+            description: req.body.description,
+            hitDie: req.body.hitDie,
+            ability: req.body.ability,
+            savingThrow: req.body.savingThrow,
+            armorAndWeapon: req.body.armorAndWeapon,
+            avatar: {data: fs.readFileSync(req.files.avatar.path), contentType: "image/png"}
+        }
+    );
+    character.save(function (err) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.status(201).end();
+            }
+        }
+    )
 };

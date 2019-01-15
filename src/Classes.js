@@ -16,19 +16,6 @@ const styles = theme => ({
     button: {
         margin: theme.spacing.unit,
     },
-    h1: {
-        fontFamily: 'Arial, Helvetica, sans-serif',
-        fontSize: '30px',
-        letterSpacing: '2px',
-        wordSpacing: '2px',
-        color: '#000000',
-        fontWeight: '700',
-        textDecoration: 'none',
-        fontStyle: 'normal',
-        fontVariant: 'normal',
-        textTransform: 'uppercase',
-        textAlign: 'center',
-    }
 });
 
 class heroClasses extends React.Component {
@@ -41,10 +28,10 @@ class heroClasses extends React.Component {
     }
 
     doListSearch = async () => {
-        const url = getUrl("api/characters");
+        const url = getUrl("api/character");
         const response = await fetch(url);
-        const characters = await response.json();
-        this.setState({characters: characters});
+        const character = await response.json();
+        this.setState({character: character});
     };
 
     render() {
@@ -52,9 +39,29 @@ class heroClasses extends React.Component {
         return (
 
             <div>
-                <h1>Official Classes</h1>
-                <TiltlebarGridList tileData={this.state.characters}/>
-                <h1>Create your own class</h1>
+                <h1 style={{fontFamily: 'Arial, Helvetica, sans-serif',
+                    fontSize: '30px',
+                    letterSpacing: '2px',
+                    wordSpacing: '2px',
+                    color: '#000000',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    fontStyle: 'normal',
+                    fontVariant: 'normal',
+                    textTransform: 'uppercase',
+                    textAlign: 'center',}}>Official Classes:</h1>
+                <TiltlebarGridList tileData={this.state.character}/>
+                <h1 style={{fontFamily: 'Arial, Helvetica, sans-serif',
+                    fontSize: '30px',
+                    letterSpacing: '2px',
+                    wordSpacing: '2px',
+                    color: '#000000',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    fontStyle: 'normal',
+                    fontVariant: 'normal',
+                    textTransform: 'uppercase',
+                    textAlign: 'center',}}>Create your own class:</h1>
                 <NewAddField/>
             </div>
         );

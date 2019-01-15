@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import {getUrl} from './config/ServerConfiguration';
-import CheckboxLabel from './CheckBox';
 import UploadButton from './UploadButton';
 
 const styles = theme => ({
@@ -26,7 +25,7 @@ const styles = theme => ({
     },
 });
 
-const hit = [
+const hitDie = [
     {
         value: 'd4',
         label: 'd4',
@@ -75,10 +74,27 @@ const ability = [
 class NewAddField extends React.Component {
     state = {
         name: '',
-        hit: '',
+        description: '',
+        hitDie: '',
         ability: '',
         savingThrow: '',
         armorAndWeapon: '',
+        avatar: '',
+    };
+
+    addClass = async (formData) => {
+        const url = getUrl("api/character");
+        const requestSettings = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+            },
+        };
+        requestSettings.body = new FormData();
+        for (const key in formData) {
+            requestSettings.body.append(key, formData[key]);
+        }
+        await fetch(url, requestSettings);
     };
 
     handleChange = name => event => {
@@ -108,9 +124,11 @@ class NewAddField extends React.Component {
                         id="outlined-multiline-static"
                         label="Description"
                         multiline
-                        fullWidth={100}
+                        fullWidth
                         rows="10"
                         className={classes.textField}
+                        value={this.state.description}
+                        onChange={this.handleChange('description')}
                         margin="normal"
                         variant="outlined"
                     />
@@ -121,9 +139,9 @@ class NewAddField extends React.Component {
                         variant="outlined"
                         label="Hit Die"
                         margin="normal"
-                        value={this.state.hit}
-                        onChange={this.handleChange('hit')}>
-                        {hit.map(option => (
+                        value={this.state.hitDie}
+                        onChange={this.handleChange('hitDie')}>
+                        {hitDie.map(option => (
                             <MenuItem key={option.value} value={option.value}>
                                 {option.label}
                             </MenuItem>
@@ -164,7 +182,7 @@ class NewAddField extends React.Component {
                     />
                 </form>
                 <UploadButton/>
-                <Button onClick={() => this.addRace(this.state)} variant="contained" size="large" color="primary" className={classes.margin}>
+                <Button onClick={() => this.addClass(this.state.avatar)} variant="contained" size="large" color="primary" className={classes.margin}>
                     Create
                 </Button>
             </div>

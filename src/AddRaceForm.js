@@ -120,7 +120,7 @@ class NewAddField extends React.Component {
                         label="Speed Walking"
                         value={this.state.speedWalking}
                         onChange={this.handleChange('speedWalking')}
-                        helperText="10,20,30, etc."
+                        placeholder="10,20,30, etc."
                         margin="normal"
                     />
                     <TextField
@@ -130,7 +130,7 @@ class NewAddField extends React.Component {
                         label="Speed Burrowing"
                         value={this.state.speedBurrowing}
                         onChange={this.handleChange('speedBurrowing')}
-                        helperText="10,20,30, etc."
+                        placeholder="10,20,30, etc."
                         margin="normal"
                     />
                     <TextField
@@ -138,9 +138,9 @@ class NewAddField extends React.Component {
                         className={classNames(classes.textField)}
                         variant="outlined"
                         label="Speed Climbing"
-                        value={this.state.SpeedClimbing}
-                        onChange={this.handleChange('SpeedClimbing')}
-                        helperText="10,20,30, etc."
+                        value={this.state.speedClimbing}
+                        onChange={this.handleChange('speedClimbing')}
+                        placeholder="10,20,30, etc."
                         margin="normal"
                     />
                     <TextField
@@ -148,9 +148,9 @@ class NewAddField extends React.Component {
                         className={classNames(classes.textField)}
                         variant="outlined"
                         label="Speed Flying"
-                        value={this.state.SpeedFlying}
-                        onChange={this.handleChange('SpeedFlying')}
-                        helperText="10,20,30, etc."
+                        value={this.state.speedFlying}
+                        onChange={this.handleChange('speedFlying')}
+                        placeholder="10,20,30, etc."
                         margin="normal"
                     />
                     <TextField
@@ -158,16 +158,16 @@ class NewAddField extends React.Component {
                         className={classNames(classes.textField)}
                         variant="outlined"
                         label="Speed Swimming"
-                        value={this.state.SpeedSwimming}
-                        onChange={this.handleChange('SpeedSwimming')}
-                        helperText="10,20,30, etc."
+                        value={this.state.speedSwimming}
+                        onChange={this.handleChange('speedSwimming')}
+                        placeholder="10,20,30, etc."
                         margin="normal"
                     />
                     <TextField
                         required
                         id="outlined-multiline-static"
                         label="Description"
-                        fullWidth={100}
+                        fullWidth
                         multiline
                         rows="4"
                         className={classes.textField}

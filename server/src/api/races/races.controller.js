@@ -52,6 +52,8 @@ module.exports.save = function (req, res) {
             speedBurrowing: req.body.speedBurrowing
         }
     );
+    race.img.data = fs.readFileSync(req.files.userPhoto.path);
+    race.img.contentType = "image/png";
     race.save(function (err) {
             if (err) {
                 res.status(500).send(err);
